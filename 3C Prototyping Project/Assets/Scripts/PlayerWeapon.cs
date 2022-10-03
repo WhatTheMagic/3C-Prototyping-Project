@@ -9,7 +9,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Update()
     {
-        if (!Pause.gameIsPaused)
+        if (!PauseMenu.gameIsPaused)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
