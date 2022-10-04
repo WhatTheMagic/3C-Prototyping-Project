@@ -9,12 +9,18 @@ public class SpawnerScript : MonoBehaviour
     [Header("TRIGGER BOX COLLIDER AS CHILDREN")]
     [Space(15)]
     public GameObject spawnItem;
+    
+    // Store childrens colliders
     Collider[] colliders;
 
-    float spawnArea;
+    #region Vector3 collider areas 
     Vector3 spawnPoint;
     Vector3 m_Center;
     Vector3 m_Size, m_Min, m_Max;
+    #endregion
+
+    // The total area the colliders covers, relative to the (X,Z)-Axis
+    float spawnArea;
 
     void Start()
     {
@@ -49,6 +55,27 @@ public class SpawnerScript : MonoBehaviour
         }
         Debug.LogAssertion(spawnArea);
 
+        
+        Spawn(spawnItem);
+        StartCoroutine(Poop());
+        
+    }
+
+    IEnumerator Poop()
+    {
+        int i = 0;
+        while(i < 1000)
+        {
+            Spawn();
+            i++;
+            yield return new WaitForFixedUpdate();
+        }
+
+    }
+
+    [ContextMenu("Poop")]
+    void Spawn()
+    {
         float random = UnityEngine.Random.Range(0, spawnArea);
         float collect = 0;
         Collider col = null;
@@ -62,13 +89,38 @@ public class SpawnerScript : MonoBehaviour
                 Debug.Log(i);
                 break;
             }
-            
+
         }
         spawnPoint = new Vector3(UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x), 1f, UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z));
         RaycastHit hit;
         if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
         {
             Instantiate(spawnItem, hit.point, Quaternion.identity);
+
+        }
+    }
+     void Spawn(GameObject spawnObject)
+    {
+        float random = UnityEngine.Random.Range(0, spawnArea);
+        float collect = 0;
+        Collider col = null;
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            float size = colliders[i].bounds.size.x * colliders[i].bounds.size.z;
+            collect += size;
+            if (collect >= random)
+            {
+                col = colliders[i];
+                Debug.Log(i);
+                break;
+            }
+
+        }
+        spawnPoint = new Vector3(UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x), 1f, UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z));
+        RaycastHit hit;
+        if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
+        {
+            Instantiate(spawnObject, hit.point, Quaternion.identity);
 
         }
     }
