@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7761871167659860927}
   - component: {fileID: 7761871167659860920}
   - component: {fileID: 7761871167659860921}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PickupTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b4a52065acae34ea0497ac8e70500c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 11400000, guid: fdb5e00d1f89fe646a4fddf71d93bbbf, type: 2}
+  powerUp: {fileID: 11400000, guid: eb3a9998ab4e5e246b5c5549d0264c84, type: 2}
