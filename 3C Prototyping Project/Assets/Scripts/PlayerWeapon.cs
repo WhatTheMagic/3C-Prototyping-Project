@@ -8,17 +8,14 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
 
-    private void Update()
+    private void OnFire()
     {
         if (!PauseMenu.gameIsPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                GameObject newProjectile = Instantiate(projectilePrefab);
-                newProjectile.transform.position = shootingStartPosition.position;
-                newProjectile.transform.rotation = shootingStartPosition.rotation;
-                newProjectile.GetComponent<Projectile>().Initialize();
-            }
+            GameObject newProjectile = Instantiate(projectilePrefab);
+            newProjectile.transform.position = shootingStartPosition.position;
+            newProjectile.transform.rotation = shootingStartPosition.rotation;
+            newProjectile.GetComponent<Projectile>().Initialize();
         }
     }
 }
