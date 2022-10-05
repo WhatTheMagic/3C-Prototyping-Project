@@ -15,8 +15,18 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(this.gameObject);
+        Debug.Log(collision.transform.name);
         GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
         damageIndicator.transform.position = collision.GetContact(0).point;
+
+        if (collision.transform.CompareTag("Player"))
+        {
+            collision.transform.GetComponent<PlayerHealth>().TakeDamage(5);
+        }
+        else if (collision.transform.CompareTag("Enemy"))
+        {
+            collision.transform.GetComponent<EnemyAI>().TakeDamage(34);
+        }
+        Destroy(this.gameObject);
     }
 }

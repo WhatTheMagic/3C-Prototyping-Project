@@ -25,8 +25,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Transform shootingStartPosition;
 
     //Health
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private int health;
+    [SerializeField] private int maxHealth = 100;
 
     private void Awake()
     {
@@ -119,21 +119,8 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
 
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            TakeDamage(34);
-        }
-
-        if (other.gameObject.CompareTag("Death"))
-        {
-            TakeDamage(100);
-        }
-    }
-
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)

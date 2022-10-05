@@ -27,11 +27,6 @@ public class PlayerHealth : MonoBehaviour
 		}
 		isColliding = true;
 
-		if (other.gameObject.CompareTag("Projectile"))
-		{
-			TakeDamage(5);
-		}
-
 		if (other.gameObject.CompareTag("Death"))
 		{
 			TakeDamage(100);
@@ -39,7 +34,14 @@ public class PlayerHealth : MonoBehaviour
 
 		if (other.gameObject.CompareTag("Pickup") && playerHealth < 100)
 		{
-			playerHealth = playerHealth + 25;
+			if (playerHealth >= 76)
+            {
+				playerHealth = 100;
+            } 
+			else
+            {
+				playerHealth = playerHealth + 25;
+			}
 		}
 	}
 
