@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using UnityEngine;
 public class SpawnerScript : MonoBehaviour
 {
     [Header("CREATE EMPTY GAME OBJECT WITH ONE")]
-    [Header("TRIGGER BOX COLLIDER AS CHILDREN")]
+    [Header("TRIGGER BOX/SPHERE COLLIDER AS CHILDREN")]
     [Space(15)]
     public GameObject spawnItem;
 
@@ -37,7 +36,7 @@ public class SpawnerScript : MonoBehaviour
         {
             collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
         }
-
+        colliderArea.Clear();
         OutputData();
     }
 
@@ -47,6 +46,7 @@ public class SpawnerScript : MonoBehaviour
         spawnTotalArea = 0;
         foreach(var collider in collidersBase)
         {
+            collider.gameObject.isStatic = true;
             float size = 0;
             switch (collider)
             {
@@ -80,7 +80,7 @@ public class SpawnerScript : MonoBehaviour
         {
             Spawn(spawnItem);
             i++;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForEndOfFrame();
             
         }
 
@@ -139,35 +139,56 @@ public class SpawnerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
         {
-            Instantiate(spawnObject, hit.point, Quaternion.identity);
+            spawnObject = Instantiate(spawnObject, hit.point, Quaternion.identity);
 
         }
     }
-    /*
-     void Spawn(GameObject spawnObject)
+
+    GameObject SpawnAndGet(GameObject spawnObject)
     {
         float random = UnityEngine.Random.Range(0, spawnTotalArea);
         float collect = 0;
         Collider col = null;
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < colliderArea.Count; i++)
         {
-            float size = colliders[i].bounds.size.x * colliders[i].bounds.size.z;
+            float size = colliderArea[i];
             collect += size;
             if (collect >= random)
             {
-                col = colliders[i];
+                col = collidersBase[i];
                 Debug.Log(i);
                 break;
             }
 
         }
-        spawnPoint = new Vector3(UnityEngine.Random.Range(col.bounds.min.x, col.bounds.max.x), 1f, UnityEngine.Random.Range(col.bounds.min.z, col.bounds.max.z));
+
+        switch (col)
+        {
+            case BoxCollider:
+                spawnPoint = new Vector3(UnityEngine.Random.Range(-col.bounds.size.x, col.bounds.size.z) / 2, 0f, UnityEngine.Random.Range(-col.bounds.size.z, col.bounds.size.z) / 2) + col.bounds.center;
+
+                break;
+
+            case SphereCollider:
+                SphereCollider collider = (SphereCollider)col;
+                spawnPoint = UnityEngine.Random.Range(0f, collider.radius * CompareLocalScale(col.transform.localScale)) * new Vector3(UnityEngine.Random.Range(-10f, 10f), 0f, UnityEngine.Random.Range(-10f, 10f)).normalized + col.bounds.center;
+
+                break;
+            default:
+                break;
+        }
         RaycastHit hit;
         if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
         {
-            Instantiate(spawnObject, hit.point, Quaternion.identity);
+            spawnObject = Instantiate(spawnObject, hit.point, Quaternion.identity);
 
         }
-    }*/
+        return spawnObject;
+    }
 
+    [ContextMenu("SpawnTest")]
+    void Spawn()
+    {
+        Spawn(spawnItem);
+    }
 }
