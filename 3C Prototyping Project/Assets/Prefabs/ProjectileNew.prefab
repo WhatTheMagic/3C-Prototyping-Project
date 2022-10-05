@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   projectileBody: {fileID: 8835622785510242434}
-  damageIndicatorPrefab: {fileID: 4191453333334994848, guid: 08408fa3a1d561c4fb6b5d23992202dd, type: 3}
+  damageIndicatorPrefab: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4, type: 3}
 --- !u!54 &8835622785510242434
 Rigidbody:
   m_ObjectHideFlags: 0
