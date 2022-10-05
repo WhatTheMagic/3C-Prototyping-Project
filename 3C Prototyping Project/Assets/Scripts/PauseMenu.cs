@@ -26,13 +26,10 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    void Update()
+    void OnPause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            gameIsPaused = !gameIsPaused;
-            PauseGame();
-        }
+        gameIsPaused = !gameIsPaused;
+        PauseGame();
     }
 
     void PauseGame()
