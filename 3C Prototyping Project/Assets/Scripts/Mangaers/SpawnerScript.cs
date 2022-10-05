@@ -2,6 +2,7 @@ using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
@@ -10,10 +11,18 @@ public class SpawnerScript : MonoBehaviour
     [Header("TRIGGER BOX COLLIDER AS CHILDREN")]
     [Space(15)]
     public GameObject spawnItem;
-    
+
     // Store childrens colliders
-    Collider[] colliders;
+
+    [ContextMenuItem("Collect Colliders", "GetColliders", order = 4)]
+    [SerializeField] List<Collider> collidersBase ;
     [SerializeField] List<float> colliderArea = new List<float>();
+
+    [ContextMenu("Gather Colliders")]
+    void GetColliders()
+    {
+        collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
+    }
 
     #region Vector3 collider areas 
     Vector3 spawnPoint;
@@ -22,11 +31,12 @@ public class SpawnerScript : MonoBehaviour
     // The total area the colliders covers, relative to the (X,Z)-Axis
     float spawnTotalArea;
 
-    void Start()
+    void Awake()
     {
-        colliders = GetComponentsInChildren<Collider>();
-        Debug.LogAssertion(colliders[0].bounds.center);
-        Debug.LogAssertion(colliders[0].bounds.size);
+        if (collidersBase.Count < 1)
+        {
+            collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
+        }
 
         OutputData();
     }
@@ -35,7 +45,7 @@ public class SpawnerScript : MonoBehaviour
     {
 
         spawnTotalArea = 0;
-        foreach(var collider in colliders)
+        foreach(var collider in collidersBase)
         {
             float size = 0;
             switch (collider)
@@ -58,18 +68,20 @@ public class SpawnerScript : MonoBehaviour
         Debug.LogAssertion(spawnTotalArea);
 
         
-        StartCoroutine(Poop());
+        //StartCoroutine(Poop());
         
     }
 
+    // Debug below
     IEnumerator Poop()
     {
         int i = 0;
         while(i < 1000)
         {
-            Spawn();
+            Spawn(spawnItem);
             i++;
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(0.2f);
+            
         }
 
     }
@@ -91,8 +103,7 @@ public class SpawnerScript : MonoBehaviour
         }
     }
     
-    [ContextMenu("Poop")]
-    void Spawn()
+    public void Spawn(GameObject spawnObject)
     {
         float random = UnityEngine.Random.Range(0, spawnTotalArea);
         float collect = 0;
@@ -103,7 +114,7 @@ public class SpawnerScript : MonoBehaviour
             collect += size;
             if (collect >= random)
             {
-                col = colliders[i];
+                col = collidersBase[i];
                 Debug.Log(i);
                 break;
             }
@@ -128,10 +139,11 @@ public class SpawnerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
         {
-            Instantiate(spawnItem, hit.point, Quaternion.identity);
+            Instantiate(spawnObject, hit.point, Quaternion.identity);
 
         }
     }
+    /*
      void Spawn(GameObject spawnObject)
     {
         float random = UnityEngine.Random.Range(0, spawnTotalArea);
@@ -156,12 +168,6 @@ public class SpawnerScript : MonoBehaviour
             Instantiate(spawnObject, hit.point, Quaternion.identity);
 
         }
-    }
+    }*/
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Debug.Log(colliders[0]);
-        
-    }
 }
