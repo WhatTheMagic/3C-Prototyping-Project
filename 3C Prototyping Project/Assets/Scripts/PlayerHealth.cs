@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
 
 		if (other.gameObject.CompareTag("Projectile"))
 		{
-			TakeDamage(10);
+			TakeDamage(5);
 		}
 
 		if (other.gameObject.CompareTag("Death"))
