@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pickup
-  - Projectile
   - Death
+  - Projectile
+  - Pickup
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,15 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
+  - whatIsGround
+  - whatIsPlayer
   - Enemy
-  - Player
-  - Friendly
-  - Wall
-  - Interactable
-  - 
-  - Post Processing
-  - 
   - 
   - 
   - 
