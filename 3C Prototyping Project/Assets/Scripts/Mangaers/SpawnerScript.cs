@@ -23,6 +23,9 @@ public class SpawnerScript : MonoBehaviour
         collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
     }
 
+    // 
+    [SerializeField] LayerMask hitMask;
+
     #region Vector3 collider areas 
     Vector3 spawnPoint;
     #endregion
@@ -137,9 +140,9 @@ public class SpawnerScript : MonoBehaviour
                 break;
         }
         RaycastHit hit;
-        if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
+        if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity, hitMask))
         {
-            spawnObject = Instantiate(spawnObject, hit.point, Quaternion.identity);
+            Instantiate(spawnObject, hit.point, Quaternion.identity);
 
         }
     }
@@ -177,13 +180,19 @@ public class SpawnerScript : MonoBehaviour
             default:
                 break;
         }
+        GameObject returnObject = null;
         RaycastHit hit;
-        if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
+        if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity, hitMask))
         {
-            spawnObject = Instantiate(spawnObject, hit.point, Quaternion.identity);
+            returnObject = Instantiate(spawnObject, hit.point, Quaternion.identity);
+            return returnObject;
+
 
         }
-        return spawnObject;
+        else
+        {
+            return null;
+        }
     }
 
     [ContextMenu("SpawnTest")]
