@@ -35,6 +35,7 @@ public class PlayerDash : MonoBehaviour
                 return;
             }
 
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Dash/Dash");
             StartCoroutine(QuickMove()); //calling on IEnumerator
         }
     }
