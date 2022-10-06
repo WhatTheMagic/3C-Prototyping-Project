@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
 
     //Health
     [SerializeField] private int health;
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxHealth;
 
     private void Awake()
     {
