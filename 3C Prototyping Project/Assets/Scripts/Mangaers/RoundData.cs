@@ -8,4 +8,10 @@ public class RoundData : ScriptableObject
 {
     public int roundID;
     public List<WaveData> waveDatas;
+    
+    public List<WaveData> GetWaveDatas()
+    {
+        return waveDatas;
+        
+    }
 }

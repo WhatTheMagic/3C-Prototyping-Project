@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WaveData", menuName = "Difficulty Data/Wave", order = 1)]
 public class WaveData : ScriptableObject
 {
+    public float startDelay;
     public float timeEnd;
     public float spawnRateStart;
     public float spawnRateEnd;

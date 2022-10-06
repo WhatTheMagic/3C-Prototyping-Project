@@ -19,14 +19,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float sightRange, attackRange;
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
-
     //Attack code
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
 
     //Health
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private int health;
+    [SerializeField] private int maxHealth = 100;
+
 
     private void Awake()
     {
@@ -103,6 +103,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy/EnemyShoot/EnemyShoot");
+            
             //Attack code
             GameObject newProjectile = Instantiate(projectilePrefab);
             newProjectile.transform.position = shootingStartPosition.position;
@@ -119,21 +121,8 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
 
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            TakeDamage(34);
-        }
-
-        if (other.gameObject.CompareTag("Death"))
-        {
-            TakeDamage(100);
-        }
-    }
-
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
@@ -144,6 +133,7 @@ public class EnemyAI : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy/Death/Death");
         Destroy(gameObject);
     }
 

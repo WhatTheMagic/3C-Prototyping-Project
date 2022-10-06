@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5603540152060378866}
   - component: {fileID: 2476340125062600984}
   - component: {fileID: 7658242824689270034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyBody
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,9 @@ GameObject:
   - component: {fileID: 7579523435825895057}
   - component: {fileID: 7113181981394014250}
   - component: {fileID: 3533522597042455226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,8 +192,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7929228644321602672}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4221700852696037044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,10 +240,9 @@ GameObject:
   - component: {fileID: 555169075188565531}
   - component: {fileID: 793115793202072180}
   - component: {fileID: 455257438532094631}
-  - component: {fileID: 8151675085659217182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,25 +322,13 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 5
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1
   alreadyAttacked: 0
-  sightRange: 20
-  attackRange: 12
+  sightRange: 200
+  attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
   projectilePrefab: {fileID: 6245886035090430729, guid: 11e4522c1fed99e4d9f390bb95e35a5e, type: 3}
   shootingStartPosition: {fileID: 4221700852696037044}
   health: 0
   maxHealth: 100
---- !u!114 &8151675085659217182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681927410702862017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9816d60541793584487553d09da3f4e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -25,8 +25,8 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 movementVector;
     private Vector3 lastMaxMovementVector;
 
-    private Vector2 leftStickPosition;
-    private Vector2 rightStickPosition;
+    public Vector2 leftStickPosition;
+    public Vector2 rightStickPosition;
 
     [HideInInspector]
     public bool isInputEnabled;
