@@ -6,17 +6,22 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody projectileBody;
     [SerializeField] private GameObject damageIndicatorPrefab;
+    [SerializeField] private List<Collider> myColliders = new List<Collider>();
 
     public void Initialize()
     {
         projectileBody.AddForce(transform.forward * 5000f + transform.up * 300f);
     }
 
-    public void Initialize(Collider[] collider)
+    public void Initialize(List<Collider> collider)
     {
         foreach (var item in collider)
         {
-            Physics.IgnoreCollision(item, this.GetComponent<Collider>());
+            foreach (var itemitem in myColliders)
+            {
+                Physics.IgnoreCollision(item, itemitem);
+
+            }
 
         }
 

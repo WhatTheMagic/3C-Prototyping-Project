@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c840ebe0ec66a8742a5893def7d1943c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
   projectileBody: {fileID: 8835622785510242434}
   damageIndicatorPrefab: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4, type: 3}
+  myColliders:
+  - {fileID: 1843889500263917498}
 --- !u!54 &8835622785510242434
 Rigidbody:
   m_ObjectHideFlags: 0
