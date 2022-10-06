@@ -23,9 +23,9 @@ public class Projectile : MonoBehaviour
         {
             collision.transform.GetComponent<PlayerHealth>().TakeDamage(5);
         }
-        else if (collision.transform.CompareTag("Enemy"))
+        else if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.transform.GetComponent<EnemyAI>().TakeDamage(34);
+            collision.transform.GetComponentInParent<EnemyAI>().TakeDamage(34);
         }
         Destroy(this.gameObject);
     }
