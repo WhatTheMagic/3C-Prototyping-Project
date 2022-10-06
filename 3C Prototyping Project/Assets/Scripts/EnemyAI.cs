@@ -19,7 +19,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float sightRange, attackRange;
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
-
     //Attack code
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
@@ -27,6 +26,9 @@ public class EnemyAI : MonoBehaviour
     //Health
     [SerializeField] private int health;
     [SerializeField] private int maxHealth = 100;
+
+    [SerializeField] public AudioSource source;
+    [SerializeField] public AudioClip deathNoise;
 
     private void Awake()
     {
@@ -123,6 +125,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
         if (health <= 0)
         {
             Invoke(nameof(DestroyEnemy), 0.5f);
@@ -131,6 +134,7 @@ public class EnemyAI : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        source.PlayOneShot(deathNoise);
         Destroy(gameObject);
     }
 
