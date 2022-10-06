@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -67,9 +68,7 @@ public class PlayerHealth : MonoBehaviour
 			if (playerHealth <= 0)
 			{
 				gameObject.SetActive(false);
-				gameOverMenu.SetActive(true);
-				Cursor.visible = true;
-				Time.timeScale = 0f;
+				SceneManager.LoadScene(2);
 			}
 
 			hitTimer = 0;

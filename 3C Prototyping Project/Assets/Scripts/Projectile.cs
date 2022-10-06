@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.name);
         GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
         damageIndicator.transform.position = collision.GetContact(0).point;
 
