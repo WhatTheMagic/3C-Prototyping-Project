@@ -18,11 +18,31 @@ public class PlayerDash : MonoBehaviour
     public bool isDashing;
     public Gradient dashColor;
 
+    public Collider[] colliders;
+    public LayerMask mask;
+    public CharacterController characterController;
+    public float dashFloat;
+
     private void Awake()
     {
         trail = GetComponent<TrailRenderer>();
         myChar = gameObject.GetComponent<CharacterController>();
             moveScript = GetComponent<PlayerMovementController>();
+    }
+
+    public void Update()
+    {
+        colliders = Physics.OverlapSphere(transform.position, 2.5f, mask);
+        if (isDashing)
+        {
+            foreach (var hitCollider in colliders)
+            {
+                //Destroy(hitCollider.gameObject, 0.5f);
+                //hitCollider.GetComponent<CapsuleCollider>().enabled = false;
+                hitCollider.transform.GetComponentInParent<EnemyAI>().TakeDamage(1000);
+                
+            }
+        }
     }
 
     //Dash
