@@ -8,8 +8,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     public static bool gameIsPaused;
 
-    [SerializeField] private GameObject playerCam;
-
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -38,14 +36,12 @@ public class PauseMenu : MonoBehaviour
         {
             Time.timeScale = 0f;
             pauseMenu.SetActive(true);
-            playerCam.SetActive(false);
 
         }
         else
         {
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
-            playerCam.SetActive(true);
         }
     }
 }
