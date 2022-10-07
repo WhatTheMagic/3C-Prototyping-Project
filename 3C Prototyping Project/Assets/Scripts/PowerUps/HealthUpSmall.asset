@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700e4cba0c163484d8da668c92056883, type: 3}
   m_Name: HealthUpSmall
   m_EditorClassIdentifier: 
-  healAmount: 25
+  healAmount: 20

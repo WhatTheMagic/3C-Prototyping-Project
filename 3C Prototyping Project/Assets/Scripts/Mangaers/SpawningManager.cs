@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawningManager : MonoSingleton<SpawningManager>
+public class SpawningManager : MonoBehaviour
 {
     [Header("Spawning Data")]
     public SpawnerScript enemySpawns;
@@ -18,7 +18,7 @@ public class SpawningManager : MonoSingleton<SpawningManager>
     float timer;
 
 
-    protected override void Init()
+    void Awake()
     {
         int lowestRound = 1000;
         foreach (var item in spawnedRounds)
