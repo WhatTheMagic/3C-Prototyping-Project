@@ -124,7 +124,7 @@ public class SpawnerScript : MonoBehaviour
             if (collect >= random)
             {
                 col = _collidersBase[i];
-                Debug.Log(i);
+                //Debug.Log(i);
                 break;
             }
 
@@ -175,7 +175,7 @@ public class SpawnerScript : MonoBehaviour
             if (collect >= random)
             {
                 col = _collidersBase[i];
-                Debug.Log(i);
+                //Debug.Log(i);
                 break;
             }
 
