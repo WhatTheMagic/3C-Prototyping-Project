@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -14,11 +15,19 @@ public class PlayerHealth : MonoBehaviour
 	private bool canHit = true;
 	private bool isColliding;
 
+	public Slider slider;
+
 
 	void Start()
 	{
 		playerHealth = maxHealth;
+		slider.value = playerHealth;
 	}
+
+	public void SetHealth(int playerHealth)
+    {
+		slider.value = playerHealth;
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -73,5 +82,7 @@ public class PlayerHealth : MonoBehaviour
 
 			hitTimer = 0;
 		}
+
+		SetHealth(playerHealth);
 	}
 }
