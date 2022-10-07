@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8b9bec6d0e0fdd42ae3c98b322db225, type: 2}
+  - {fileID: 2100000, guid: f214f0dbc49bfaa439448f2bf3deb4d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,9 +224,9 @@ GameObject:
   - component: {fileID: 6569595520680704187}
   - component: {fileID: 793115793202072180}
   - component: {fileID: 455257438532094631}
-  - component: {fileID: 677935003464048352}
+  - component: {fileID: 7923354338693469783}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyFast
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 11
+  m_Speed: 30
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -303,7 +303,7 @@ MonoBehaviour:
   shootingStartPosition: {fileID: 4221700852696037044}
   health: 0
   maxHealth: 100
---- !u!136 &677935003464048352
+--- !u!136 &7923354338693469783
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

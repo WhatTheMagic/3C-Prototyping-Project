@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,18 +13,12 @@ public class PlayerHealth : MonoBehaviour
 	private float hitTimer = 0;
 	private bool canHit = true;
 	private bool isColliding;
-	public Slider slider;
 
 
 	void Start()
 	{
 		playerHealth = maxHealth;
 	}
-
-	public void SetHealth(int playerHealth)
-    {
-		slider.value = playerHealth;
-    }
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -71,13 +65,10 @@ public class PlayerHealth : MonoBehaviour
 		else
 		{
 			playerHealth = playerHealth - damage;
-			SetHealth(playerHealth);
 			if (playerHealth <= 0)
 			{
 				gameObject.SetActive(false);
-				gameOverMenu.SetActive(true);
-				Cursor.visible = true;
-				Time.timeScale = 0f;
+				SceneManager.LoadScene(2);
 			}
 
 			hitTimer = 0;
