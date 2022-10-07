@@ -295,7 +295,7 @@ MonoBehaviour:
   walkPointRange: 5
   timeBetweenAttacks: 0.5
   alreadyAttacked: 0
-  sightRange: 20
+  sightRange: 110
   attackRange: 12
   playerInSightRange: 0
   playerInAttackRange: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1898199928127449961}
   - component: {fileID: 1898199928127449962}
   - component: {fileID: 1898199928127449963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1898199928164084670}
   - component: {fileID: 1898199928164084671}
   - component: {fileID: 1898199928164084664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -204,8 +204,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1898199928693160270}
   - component: {fileID: 6382393507472490661}
-  - component: {fileID: 8484366651148752445}
-  m_Layer: 0
+  - component: {fileID: 3507881854095075678}
+  m_Layer: 9
   m_Name: Pickup
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.65368843
   m_Center: {x: -0.016582489, y: 0.07032013, z: 0}
---- !u!114 &8484366651148752445
+--- !u!114 &3507881854095075678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898199928693160271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f75ab6a7a4ce1499ea970d76f15d69, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b4a52065acae34ea0497ac8e70500c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUp: {fileID: 11400000, guid: eb3a9998ab4e5e246b5c5549d0264c84, type: 2}

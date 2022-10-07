@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4291686cf9c248045b9130a19a3ba6e2, type: 3}
   m_Name: WaveData 1
   m_EditorClassIdentifier: 
-  startDelay: 10
-  timeEnd: 10
-  spawnRateStart: 2
-  spawnRateEnd: 0.5
-  enemyPrefab: {fileID: 8681927410702862017, guid: 97a46a3c80b6fc3479d5029a40e67079, type: 3}
+  startDelay: 30
+  timeEnd: 15
+  spawnRateStart: 2.5
+  spawnRateEnd: 2.5
+  enemyPrefab: {fileID: 8681927410702862017, guid: 7b1efb523c3ba1442b2097d51528adcc, type: 3}
   enemyType: 0
