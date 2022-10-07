@@ -140,10 +140,20 @@ public class SpawnerScript : MonoBehaviour
                 break;
         }
         RaycastHit hit;
+        int timesTried = 0;
+
         if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity, hitMask))
         {
+            while (hit.collider == null || timesTried < 11)
+            {
+                timesTried++;
+                Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity, hitMask);
+                if (hit.collider != null)
+                {
+                    break;
+                }
+            }
             Instantiate(spawnObject, hit.point, Quaternion.identity);
-
         }
     }
 

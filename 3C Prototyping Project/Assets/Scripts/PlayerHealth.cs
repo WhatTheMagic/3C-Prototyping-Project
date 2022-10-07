@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-	[SerializeField] private int maxHealth = 100;
-	[SerializeField] private int playerHealth;
+	[SerializeField] public int maxHealth = 100;
+	[SerializeField] public int playerHealth;
 	[SerializeField] private GameObject gameOverMenu;
 
 	private float hitTime = 1;
@@ -14,11 +15,19 @@ public class PlayerHealth : MonoBehaviour
 	private bool canHit = true;
 	private bool isColliding;
 
+	public Slider slider;
+
 
 	void Start()
 	{
 		playerHealth = maxHealth;
+		slider.value = playerHealth;
 	}
+
+	public void SetHealth(int playerHealth)
+    {
+		slider.value = playerHealth;
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -32,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
 		{
 			TakeDamage(100);
 		}
-
+		/*
 		if (other.gameObject.CompareTag("Pickup") && playerHealth < 100)
 		{
 			if (playerHealth >= 76)
@@ -43,7 +52,8 @@ public class PlayerHealth : MonoBehaviour
             {
 				playerHealth = playerHealth + 25;
 			}
-		}
+		
+		}*/
 	}
 
 	void Update()
@@ -73,5 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
 			hitTimer = 0;
 		}
+
+		SetHealth(playerHealth);
 	}
 }
