@@ -8,7 +8,6 @@ public class PlayerHealth : MonoBehaviour
 {
 	[SerializeField] public int maxHealth = 100;
 	[SerializeField] public int playerHealth;
-	[SerializeField] private GameObject gameOverMenu;
 
 	private float hitTime = 1;
 	private float hitTimer = 0;
