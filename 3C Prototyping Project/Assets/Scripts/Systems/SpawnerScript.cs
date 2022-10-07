@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
+    /// <summary>
+    /// This script can collect colliders from child objects 
+    /// and use their size to create areas to spawn objects.
+    /// The spawning can be done from publicly
+    /// </summary>
+    
     [Header("CREATE EMPTY GAME OBJECT WITH ONE")]
     [Header("TRIGGER BOX/SPHERE COLLIDER AS CHILDREN")]
     [Space(15)]

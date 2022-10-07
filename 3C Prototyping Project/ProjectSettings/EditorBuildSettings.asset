@@ -9,10 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b8c1f095bd943de42a1e0ab949435034
   - enabled: 1
-    path: Assets/Scenes/PlayScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Ben_TestScene.unity
+    guid: 096e692f29cae1f4c8cae9056d936bb8
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: 9dce733e9cfc39d44af81563f37e11ec
+  - enabled: 1
+    path: Assets/Scenes/PlayScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ead528e01eac8f844b0c64c86b16920d, type: 2}

@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class SpawningManager : MonoBehaviour
 {
+    /// <summary>
+    /// Arthur: This script combines spawning fields and wave data together
+    /// </summary>
     [Header("Spawning Data")]
     public SpawnerScript enemySpawns;
-    private RoundData currentRoundOriginal;
     public List<RoundData> spawnedRounds;
-
+    
+    [Space(12f)]
     public RoundData currentRound;
     [SerializeField] private List<WaveData> waveDataChanges = new List<WaveData>();
 
     List<HoldingData> lerpTimes = new List<HoldingData>();
+    private RoundData currentRoundOriginal;
 
     float timer;
 
@@ -54,28 +58,7 @@ public class SpawningManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        timer = Time.time;
-
-        for (int i = 0; i < lerpTimes.Count; i++)
-        {
-
-        }
-
-    }
-    /*void Spawning(float waitTime, WaveData waveData, int id)
-    {
-        enemySpawns.Spawn(waveData.enemyPrefab);
-        lerpTimes[id].currentTime = timer - lerpTimes[id].startTime;
-        lerpTimes[id].spawnRate = Mathf.Lerp(waveDataChanges[id].spawnRateStart, waveDataChanges[id].spawnRateEnd, lerpTimes[id].currentTime / (lerpTimes[id].endTime - lerpTimes[id].startTime));
-        if (lerpTimes[id].currentTime < lerpTimes[id].endTime)
-        {
-            Debug.LogWarning(lerpTimes[id].currentTime + "    No   shit   " + lerpTimes[id].spawnRate);
-
-            Spawning(lerpTimes[id].spawnRate, waveData, id);
-        }
-    }*/
+ 
     IEnumerator SpawnDelay(float waitTime, WaveData waveData, int id)
     {
         Debug.LogWarning("Yes");
