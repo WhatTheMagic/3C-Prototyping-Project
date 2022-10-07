@@ -14,10 +14,10 @@ public class SpawningManager : MonoBehaviour
     
     [Space(12f)]
     public RoundData currentRound;
-    [SerializeField] private List<WaveData> waveDataChanges = new List<WaveData>();
+    [SerializeField] private List<WaveData> _waveDataChanges = new List<WaveData>();
 
-    List<HoldingData> lerpTimes = new List<HoldingData>();
-    private RoundData currentRoundOriginal;
+    List<HoldingData> _lerpTimes = new List<HoldingData>();
+    private RoundData _currentRoundOriginal;
 
     float timer;
 
@@ -27,7 +27,7 @@ public class SpawningManager : MonoBehaviour
         int lowestRound = 1000;
         foreach (var item in spawnedRounds)
         {
-            if (item.roundID < lowestRound) currentRoundOriginal = item;
+            if (item.roundID < lowestRound) _currentRoundOriginal = item;
         }
         timer = Time.time;
         SetRound();
@@ -37,23 +37,23 @@ public class SpawningManager : MonoBehaviour
 
     void SetRound()
     {
-        lerpTimes.Clear();
-        currentRound = Instantiate(currentRoundOriginal);
+        _lerpTimes.Clear();
+        currentRound = Instantiate(_currentRoundOriginal);
         foreach (var item in currentRound.GetWaveDatas())
         {
-            waveDataChanges.Add(Instantiate(item));
-            lerpTimes.Add(new HoldingData());
+            _waveDataChanges.Add(Instantiate(item));
+            _lerpTimes.Add(new HoldingData());
         }
-        Debug.LogWarning(waveDataChanges.Count);
+        //Debug.LogWarning(waveDataChanges.Count);
 
-        for (int i = 0; i < lerpTimes.Count; i++)
+        for (int i = 0; i < _lerpTimes.Count; i++)
         {
-            lerpTimes[i].startTime = timer + waveDataChanges[i].startDelay;
-            lerpTimes[i].lerpRatio = 0f;
-            lerpTimes[i].currentTime = 0f;
-            lerpTimes[i].endTime = lerpTimes[i].currentTime + waveDataChanges[i].timeEnd;
-            lerpTimes[i].spawnRate = waveDataChanges[i].spawnRateStart;
-            StartCoroutine( SpawnDelay(lerpTimes[i].spawnRate + waveDataChanges[i].startDelay, waveDataChanges[i], i));
+            _lerpTimes[i].startTime = timer + _waveDataChanges[i].startDelay;
+            _lerpTimes[i].lerpRatio = 0f;
+            _lerpTimes[i].currentTime = 0f;
+            _lerpTimes[i].endTime = _lerpTimes[i].currentTime + _waveDataChanges[i].timeEnd;
+            _lerpTimes[i].spawnRate = _waveDataChanges[i].spawnRateStart;
+            StartCoroutine( SpawnDelay(_lerpTimes[i].spawnRate + _waveDataChanges[i].startDelay, _waveDataChanges[i], i));
         }
 
     }
@@ -61,18 +61,18 @@ public class SpawningManager : MonoBehaviour
  
     IEnumerator SpawnDelay(float waitTime, WaveData waveData, int id)
     {
-        Debug.LogWarning("Yes");
+        //Debug.LogWarning("Yes");
         yield return new WaitForSeconds(waitTime);
-        Debug.LogWarning("No");
+        //Debug.LogWarning("No");
 
         enemySpawns.Spawn(waveData.enemyPrefab);
-        lerpTimes[id].currentTime = Time.time - lerpTimes[id].startTime;
-        lerpTimes[id].spawnRate = Mathf.Lerp(waveDataChanges[id].spawnRateStart, waveDataChanges[id].spawnRateEnd,  lerpTimes[id].currentTime /lerpTimes[id].endTime );
-        if (lerpTimes[id].currentTime < lerpTimes[id].endTime)
+        _lerpTimes[id].currentTime = Time.time - _lerpTimes[id].startTime;
+        _lerpTimes[id].spawnRate = Mathf.Lerp(_waveDataChanges[id].spawnRateStart, _waveDataChanges[id].spawnRateEnd,  _lerpTimes[id].currentTime /_lerpTimes[id].endTime );
+        if (_lerpTimes[id].currentTime < _lerpTimes[id].endTime)
         {
-            Debug.LogWarning(lerpTimes[id].currentTime +"    No   shit   " + lerpTimes[id].spawnRate);
+            //Debug.LogWarning(lerpTimes[id].currentTime +"    No   shit   " + lerpTimes[id].spawnRate);
 
-            StartCoroutine(SpawnDelay(lerpTimes[id].spawnRate, waveData, id));
+            StartCoroutine(SpawnDelay(_lerpTimes[id].spawnRate, waveData, id));
         }else 
         {
             yield return null;

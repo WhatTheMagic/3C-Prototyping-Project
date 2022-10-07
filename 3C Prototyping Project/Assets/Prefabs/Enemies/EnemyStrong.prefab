@@ -296,7 +296,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.5
   alreadyAttacked: 0
   sightRange: 120
-  attackRange: 12
+  attackRange: 8
   playerInSightRange: 0
   playerInAttackRange: 0
   projectilePrefab: {fileID: 6245886035090430729, guid: 11e4522c1fed99e4d9f390bb95e35a5e, type: 3}

@@ -20,13 +20,13 @@ public class SpawnerScript : MonoBehaviour
     // Store childrens colliders
 
     [ContextMenuItem("Collect Colliders", "GetColliders", order = 4)]
-    [SerializeField] List<Collider> collidersBase ;
+    [SerializeField] List<Collider> _collidersBase ;
     [SerializeField] List<float> colliderArea = new List<float>();
 
     [ContextMenu("Gather Colliders")]
     void GetColliders()
     {
-        collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
+        _collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
     }
 
     // 
@@ -41,9 +41,9 @@ public class SpawnerScript : MonoBehaviour
 
     void Awake()
     {
-        if (collidersBase.Count < 1)
+        if (_collidersBase.Count < 1)
         {
-            collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
+            _collidersBase = GetComponentsInChildren<Collider>().ToList<Collider>();
         }
         colliderArea.Clear();
         OutputData();
@@ -53,7 +53,7 @@ public class SpawnerScript : MonoBehaviour
     {
 
         spawnTotalArea = 0;
-        foreach(var collider in collidersBase)
+        foreach(var collider in _collidersBase)
         {
             collider.gameObject.isStatic = true;
             float size = 0;
@@ -72,9 +72,9 @@ public class SpawnerScript : MonoBehaviour
  
             spawnTotalArea += size;
             colliderArea.Add(size);
-            Debug.Log(size);
+            //Debug.Log(size);
         }
-        Debug.LogAssertion(spawnTotalArea);
+        //Debug.LogAssertion(spawnTotalArea);
 
         
         //StartCoroutine(Poop());
@@ -123,7 +123,7 @@ public class SpawnerScript : MonoBehaviour
             collect += size;
             if (collect >= random)
             {
-                col = collidersBase[i];
+                col = _collidersBase[i];
                 Debug.Log(i);
                 break;
             }
@@ -174,7 +174,7 @@ public class SpawnerScript : MonoBehaviour
             collect += size;
             if (collect >= random)
             {
-                col = collidersBase[i];
+                col = _collidersBase[i];
                 Debug.Log(i);
                 break;
             }
