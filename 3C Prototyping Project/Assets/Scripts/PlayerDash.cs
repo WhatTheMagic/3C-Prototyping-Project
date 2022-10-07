@@ -39,7 +39,7 @@ public class PlayerDash : MonoBehaviour
             {
                 //Destroy(hitCollider.gameObject, 0.5f);
                 //hitCollider.GetComponent<CapsuleCollider>().enabled = false;
-                hitCollider.transform.GetComponentInParent<EnemyAI>().TakeDamage(1000);
+                hitCollider.transform.GetComponentInParent<EnemyAI>().TakeDamage(35);
                 
             }
         }

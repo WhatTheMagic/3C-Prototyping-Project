@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.transform.GetComponentInParent<EnemyAI>().TakeDamage(34);
+            collision.transform.GetComponentInParent<EnemyAI>().TakeDamage(35);
         }
         FMODUnity.RuntimeManager.PlayOneShot("event:/Bullets/GetHit/HitSounds");
         Destroy(this.gameObject);

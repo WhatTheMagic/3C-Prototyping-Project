@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: fmod Assets/fmod3Cproj/Build/Desktop/Enemy.bank
   Name: fmod3Cproj/Build/Desktop/Enemy
   StudioPath: bank:/Enemy
-  lastModified: 638007299680104343
+  lastModified: 638006896027560870
   FileSizes: []
   Exists: 1
 --- !u!114 &-8639427805129121986
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: fmod Assets/fmod3Cproj/Build/Desktop/Master.strings.bank
   Name: fmod3Cproj/Build/Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638007299680104343
+  lastModified: 638006896027600759
   FileSizes:
   - Name: 
     Value: 1254
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: fmod Assets/fmod3Cproj/Build/Desktop/Master.bank
   Name: fmod3Cproj/Build/Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638007299680104343
+  lastModified: 638006896027590812
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -142,7 +142,7 @@ MonoBehaviour:
   - {fileID: -326314709009589311}
   StringsBanks:
   - {fileID: -6190475963165081914}
-  cacheTime: 638007299680323756
+  cacheTime: 638006896028159644
   cacheVersion: 131592
 --- !u!114 &817847354271340950
 MonoBehaviour:
@@ -186,7 +186,7 @@ MonoBehaviour:
   Path: fmod Assets/fmod3Cproj/Build/Desktop/WorldSound.bank
   Name: fmod3Cproj/Build/Desktop/WorldSound
   StudioPath: bank:/WorldSound
-  lastModified: 638007299680323756
+  lastModified: 638006896028159644
   FileSizes: []
   Exists: 1
 --- !u!114 &2310585860888063411
@@ -231,7 +231,7 @@ MonoBehaviour:
   Path: fmod Assets/fmod3Cproj/Build/Desktop/Player.bank
   Name: fmod3Cproj/Build/Desktop/Player
   StudioPath: bank:/Player
-  lastModified: 638007299680114330
+  lastModified: 638006896027839923
   FileSizes: []
   Exists: 1
 --- !u!114 &5298109866076504409
@@ -304,7 +304,7 @@ MonoBehaviour:
   Path: fmod Assets/fmod3Cproj/Build/Desktop/Bullet.bank
   Name: fmod3Cproj/Build/Desktop/Bullet
   StudioPath: bank:/Bullet
-  lastModified: 638007299680104343
+  lastModified: 638006896027309994
   FileSizes: []
   Exists: 1
 --- !u!114 &7414621875339807674
